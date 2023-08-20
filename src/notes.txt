@@ -1,0 +1,8 @@
+//npx (takes and implement and relases)
+//npm (take and implement)[package manager]-old
+//yarn (yet another resource negotiator)-latest
+//components -Card,App,..
+//react-routing-rom(connection between the pages , Recive data from pages)
+//for install -> npm install libraryname
+//for unistall -> npm unistall libraryname
+//for navigation page  ->npm install react-router-dom@6
