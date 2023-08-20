@@ -5,6 +5,7 @@ const Home = () => {
     const navigate = useNavigate()
     const onCardClick =()=>{
         navigate('/board')
+        
     }
 
     return (
