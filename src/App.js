@@ -1,6 +1,6 @@
 import './App.css'
-import Board from './Board'
-import Home from './Home';
+import Board5 from './Pages/HomePage/Board'
+import Home from './Pages/HomePage/Home';
 import {  BrowserRouter as Link,  Routes,  Route} from "react-router-dom";
 const App=()=>{
   return(
@@ -10,7 +10,7 @@ const App=()=>{
       </div>
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/board' element={<Board/>}/>
+        <Route path='/board5x5' element={<Board5/>}/>
        </Routes>
     </div>
   )
