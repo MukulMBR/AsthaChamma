@@ -5,7 +5,7 @@ const DContext = createContext();
 
 const Dice7x7Provider = ({ children }) => {
   const [diceValue, setDiceValue] = useState(0);
-  const Dice = [1, 2, 3, 4, 8];
+  const Dice = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const rollDice = () => {
     let n = Dice[Math.floor(Math.random() * Dice.length)];
