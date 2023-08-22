@@ -21,6 +21,11 @@ const iniSQState = [
         enableCoin : false
     },
     {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
         noOfCoin : 4,
         color : ["red","red","red","red"],
         enableCoin : true
@@ -61,9 +66,70 @@ const iniSQState = [
         enableCoin : false
     },
     {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
         noOfCoin : 4,
         color : ["blue","blue","blue","blue"],
         enableCoin : true
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
     },
     {
         noOfCoin : 0,
@@ -121,6 +187,57 @@ const iniSQState = [
         enableCoin : false
     },
     {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
         noOfCoin : 4,
         color : ["pink","pink","pink","pink"],
         enableCoin : true
@@ -134,11 +251,17 @@ const iniSQState = [
         noOfCoin : 0,
         color : [],
         enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
     }
 ]
-const safeZone = [2,10,22,14,12,6,8,18,16];
+
+const safeZone = [2,10,22,14,12];
 const safeMap = new Map([['red', 2], ['blue', 10], ['pink', 22],['yellow',14],['home',12]]);
-export const squareContext = createContext();function Board5x5() {
+export const squareContext = createContext();function Board9x9() {
   const [updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
   const { diceValue } = useContext(DContext);
@@ -406,31 +529,31 @@ export const squareContext = createContext();function Board5x5() {
     }
 
       return (
-          <squareContext.Provider
-              value={{
-                  stateSQ: stateSQ,
-                  setStateSQ: setStateSQ,
-                  generateNextIdx: generateNextIdx,
-              }}
-          >
-              <div className="board-wrapper">
-                  {/* Create a 7x7 grid layout */}
-                  {Array.from({ length: 5 }).map((_, rowIndex) => (
-                      <div key={rowIndex} className="board-row">
-                          {Array.from({ length: 5 }).map((_, colIndex) => {
-                              const index = rowIndex * 5 + colIndex;
-                              return <Squares key={index} index={index} />;
-                          })}
-                      </div>
-                  ))}
+        <squareContext.Provider
+            value={{
+                stateSQ: stateSQ,
+                setStateSQ: setStateSQ,
+                generateNextIdx: generateNextIdx,
+            }}
+        >
+            <div className="board-wrapper">
+                {/* Create a 7x7 grid layout */}
+                {Array.from({ length: 7 }).map((_, rowIndex) => (
+                    <div key={rowIndex} className="board-row">
+                        {Array.from({ length: 7 }).map((_, colIndex) => {
+                            const index = rowIndex * 7 + colIndex;
+                            return <Squares key={index} index={index} />;
+                        })}
+                    </div>
+                ))}
 
-                  {/* Display winner */}
-                  <div className="test-w">
-                      <span>Winner is {winner}</span>
-                  </div>
-              </div>
-          </squareContext.Provider>
+                {/* Display winner */}
+                <div className="test-w">
+                    <span>Winner is {winner}</span>
+                </div>
+            </div>
+        </squareContext.Provider>
   );
 }
 
-export default Board5x5;
+export default Board9x9;

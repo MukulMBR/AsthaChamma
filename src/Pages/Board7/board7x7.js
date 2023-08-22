@@ -4,12 +4,18 @@ import Squares from './CoinSquare'
 import {DContext} from './dice'
 
 
-const p1 = [2,1,0,5,10,15,20,21,22,23,24,19,14,9,4,3,8,13,18,17,16,11,6,7,12]; //red
-const p2 = [10,15,20,21,22,23,24,19,14,9,4,3,2,1,0,5,6,7,8,13,18,17,16,11,12]; //blue
-const p3 = [22,23,24,19,14,9,4,3,2,1,0,5,10,15,20,21,16,11,6,7,8,13,18,17,12]; //pink
-const p4 = [14,9,4,3,2,1,0,5,10,15,20,21,22,23,24,19,18,17,16,11,6,7,8,13,12]; //yellow
+const p1 = [3,2,1,0,7,14,21,28,35,42,43,44,45,46,47,48,41,34,27,20,13,6,5,4,12,19,26,33,40,39,38,37,36,29,33,15,8,9,10,11,18,25,32,31,30,23,16,17,24]; // red
+const p2 = [21,14,7,0,1,2,3,4,11,18,25,32,39,46,53,54,55,48,41,34,27,20,13,6,5,12,19,26,33,40,47,60,59,58,57,56,49,42,35,28,21,14,15,22,29,36,43,50,57]; // blue
+const p3 = [42,35,28,21,14,7,0,1,8,15,22,29,36,43,50,57,56,49,42,35,28,21,14,7,6,13,20,27,34,41,48,55,54,53,52,45,38,31,24,17,10,3,4,11,18,25,32,39,46]; // pink
+const p4 = [56,49,42,35,28,21,14,15,22,29,36,43,50,57,54,55,48,41,34,27,20,13,6,5,12,19,26,33,40,47,60,59,58,57,56,49,42,35,28,21,14,7,0,1,2,9,16,23,30]; // yellow
+
 
 const iniSQState = [
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
     {
         noOfCoin : 0,
         color : [],
@@ -61,9 +67,70 @@ const iniSQState = [
         enableCoin : false
     },
     {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
         noOfCoin : 4,
         color : ["blue","blue","blue","blue"],
         enableCoin : true
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
     },
     {
         noOfCoin : 0,
@@ -121,6 +188,57 @@ const iniSQState = [
         enableCoin : false
     },
     {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },    
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
+    },
+    {
         noOfCoin : 4,
         color : ["pink","pink","pink","pink"],
         enableCoin : true
@@ -134,11 +252,17 @@ const iniSQState = [
         noOfCoin : 0,
         color : [],
         enableCoin : false
+    },
+    {
+        noOfCoin : 0,
+        color : [],
+        enableCoin : false
     }
 ]
-const safeZone = [2,10,22,14,12,6,8,18,16];
-const safeMap = new Map([['red', 2], ['blue', 10], ['pink', 22],['yellow',14],['home',12]]);
-export const squareContext = createContext();function Board5x5() {
+
+const safeZone = [3,21,27,45,8,16,12,18,32,40,30,36,24];
+const safeMap = new Map([['red', 3], ['blue', 21], ['pink', 45],['yellow',27],['home',24]]);
+export const squareContext = createContext();function Board7x7() {
   const [updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
   const { diceValue } = useContext(DContext);
@@ -406,31 +530,31 @@ export const squareContext = createContext();function Board5x5() {
     }
 
       return (
-          <squareContext.Provider
-              value={{
-                  stateSQ: stateSQ,
-                  setStateSQ: setStateSQ,
-                  generateNextIdx: generateNextIdx,
-              }}
-          >
-              <div className="board-wrapper">
-                  {/* Create a 7x7 grid layout */}
-                  {Array.from({ length: 5 }).map((_, rowIndex) => (
-                      <div key={rowIndex} className="board-row">
-                          {Array.from({ length: 5 }).map((_, colIndex) => {
-                              const index = rowIndex * 5 + colIndex;
-                              return <Squares key={index} index={index} />;
-                          })}
-                      </div>
-                  ))}
+        <squareContext.Provider
+            value={{
+                stateSQ: stateSQ,
+                setStateSQ: setStateSQ,
+                generateNextIdx: generateNextIdx,
+            }}
+        >
+            <div className="board-wrapper">
+                {/* Create a 7x7 grid layout */}
+                {Array.from({ length: 7 }).map((_, rowIndex) => (
+                    <div key={rowIndex} className="board-row">
+                        {Array.from({ length: 7 }).map((_, colIndex) => {
+                            const index = rowIndex * 7 + colIndex;
+                            return <Squares key={index} index={index} />;
+                        })}
+                    </div>
+                ))}
 
-                  {/* Display winner */}
-                  <div className="test-w">
-                      <span>Winner is {winner}</span>
-                  </div>
-              </div>
-          </squareContext.Provider>
+                {/* Display winner */}
+                <div className="test-w">
+                    <span>Winner is {winner}</span>
+                </div>
+            </div>
+        </squareContext.Provider>
   );
 }
 
-export default Board5x5;
+export default Board7x7;
