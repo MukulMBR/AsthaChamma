@@ -3,11 +3,11 @@ import './css/squares.css'
 import { squareContext } from './board9x9'
 
 function Coin(props) {
-    const {generateNextIdx} = useContext(squareContext);
+    const {movePlayer} = useContext(squareContext);
     return (
         <div className = "g-wrapper" style = {{
             backgroundColor : props.color,
-        }} onClick = {()=>generateNextIdx(props.squareIdx,props.color)}>
+        }} onClick = {()=>movePlayer(props.squareIdx,props.color)}>
             {props.squareIdx}
         </div>
     )

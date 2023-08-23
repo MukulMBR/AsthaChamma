@@ -63,18 +63,26 @@ function Board5x5() {
     setWinner(win);
   }, [stateSQ]);
 
+
   const movePlayer  = (idx, color) => {
+
     const currentPlayer = color === 'red' ? p1 : color === 'blue' ? p2 : color === 'pink' ? p3 : p4;
     const currAIdx = currentPlayer.findIndex((ele) => ele === idx);
     const nextIdx = currentPlayer[currAIdx + diceValue];
     const currState = stateSQ.squares;
-
     currState[idx].noOfCoin -= 1;
+
     if (currState[idx].noOfCoin === 0) currState[idx].enableCoin = false;
     const nc = currState[idx].color;
     const ri = nc.findIndex(ele => ele === color);
     nc.splice(ri, 1);
     currState[idx].color = nc;
+
+    if (diceValue > currentPlayer.length - currAIdx - 1) {
+        alert("Dice value is too large for remaining path!");
+        return; // Return early to prevent further execution
+        //TODO:Touch disable to the coin
+    }
 
     if (currState[nextIdx].noOfCoin != 0 && !safeZone.find(next => next === nextIdx)) {
         const clr = currState[nextIdx].color;

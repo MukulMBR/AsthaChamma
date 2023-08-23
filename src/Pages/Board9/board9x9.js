@@ -3,11 +3,10 @@ import './css/squares.css'
 import Squares from './CoinSquare'
 import {DContext} from './dice'
 
-
-const p1 = [2,1,0,5,10,15,20,21,22,23,24,19,14,9,4,3,8,13,18,17,16,11,6,7,12]; //red
-const p2 = [10,15,20,21,22,23,24,19,14,9,4,3,2,1,0,5,6,7,8,13,18,17,16,11,12]; //blue
-const p3 = [22,23,24,19,14,9,4,3,2,1,0,5,10,15,20,21,16,11,6,7,8,13,18,17,12]; //pink
-const p4 = [14,9,4,3,2,1,0,5,10,15,20,21,22,23,24,19,18,17,16,11,6,7,8,13,12]; //yellow
+const p1 = [4,3,2,1,0,9,18,27,36,45,54,63,72,73,74,75,76,77,78,79,80,71,62,53,44,35,26,17,8,7,6,5,16,25,34,43,52,61,70,69,68,67,66,65,64,55,46,37,28,19,10,11,12,13,14,15,24,33,42,51,60,59,58,57,56,47,38,29,20,21,22,23,32,41,50,49,48,39,30,31,40]; //red
+const p2 = [36,45,54,63,72,73,74,75,76,77,78,79,80,71,62,53,44,35,26,17,8,7,6,5,4,3,2,1,0,9,18,27,10,11,12,13,14,15,16,25,34,43,52,61,70,69,68,67,66,65,64,55,46,37,28,19,20,21,22,23,24,33,42,51,60,59,58,57,56,47,38,29,30,31,32,41,50,49,48,39,40]; //blue
+const p3 = [76,77,78,79,80,71,62,53,44,35,26,17,8,7,6,5,4,3,2,1,0,9,18,27,36,45,54,63,72,73,74,75,64,55,46,37,28,19,10,11,12,13,14,15,16,25,34,43,52,61,70,69,68,67,66,65,56,47,38,29,20,21,22,23,24,33,42,51,60,59,58,57,48,39,30,31,32,41,50,49,40]; //pink
+const p4 = [44,35,26,17,8,7,6,5,4,3,2,1,0,9,18,27,36,45,54,63,72,73,74,75,76,77,78,79,80,71,62,53,70,69,68,67,66,65,64,55,46,37,28,19,10,11,12,13,14,15,16,25,34,43,52,61,60,59,58,57,56,47,38,29,20,21,22,23,24,33,42,51,50,49,48,39,30,31,32,41,40]; //yellow
 
 const colors = ["red", "blue", "yellow", "pink"];
 const noOfCoinsPerColor = 4;
@@ -62,7 +61,7 @@ export const squareContext = createContext();function Board9x9() {
     setWinner(win);
   }, [stateSQ]);
 
-  const generateNextIdx = (idx, color) => {
+  const movePlayer = (idx, color) => {
     const currentPlayer = color === 'red' ? p1 : color === 'blue' ? p2 : color === 'pink' ? p3 : p4;
     const currAIdx = currentPlayer.findIndex((ele) => ele === idx);
     const nextIdx = currentPlayer[currAIdx + diceValue];
@@ -122,7 +121,7 @@ export const squareContext = createContext();function Board9x9() {
             value={{
                 stateSQ: stateSQ,
                 setStateSQ: setStateSQ,
-                generateNextIdx: generateNextIdx,
+                movePlayer: movePlayer,
             }}
         >
             <div className="board-wrapper">

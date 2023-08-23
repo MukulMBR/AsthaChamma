@@ -32,19 +32,22 @@
 
 /*Dice*/
 .dice-wrapper {
-    outline: none;
-    background-color: rgb(13, 236, 13);
-    color: indianred;
-    font-size: larger;
-    height: 50px;
-    width: 50px;
-    border-radius: 5px;
-    margin: 0 auto; /* Center horizontally */
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-}
-
+    transition: transform 1s ease; /* Adjust duration as needed */
+  }
+  
+  .dice-wrapper.rolling {
+    animation: rollAnimation 1s infinite; /* Adjust duration as needed */
+  }
+  
+  @keyframes rollAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
 
 /*board*/
 
@@ -57,3 +60,5 @@
     display: flex;
     flex-direction: row;
 }
+
+
