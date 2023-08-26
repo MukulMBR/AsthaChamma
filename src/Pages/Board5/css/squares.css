@@ -1,64 +1,72 @@
 /*Square*/
 
 .square-wrapper{
-    height: 100px;
-    width: 100px;
-    background-color: grey;
-    border: 3px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: relative; /* Add relative positioning to allow absolute positioning of cross-mark */
+  height: 100px;
+  width: 100px;
+  background-color: grey;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .square-wrapper .Coin-wrapper{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: repeat(2,1fr);
-    grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: repeat(2,1fr);
+  grid-gap: 10px;
 }
+
+/* Style for safezone squares */
+.square-wrapper.safe-zone {
+  background-color: lightgreen; /* Change background color of safe-zone squares */
+}
+
+
 
 /* Coin.css */
 .g-wrapper {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    background-color: var(--goti-color); /* Use a CSS variable for dynamic color */
-    border: 3px solid grey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: var(--goti-color);
+  border: 3px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-/*Dice*/
+/* Dice */
 .dice-wrapper {
-    transition: transform 1s ease; /* Adjust duration as needed */
-  }
-  
-  .dice-wrapper.rolling {
-    animation: rollAnimation 1s infinite; /* Adjust duration as needed */
-  }
-  
-  @keyframes rollAnimation {
-    0% {
+  transition: transform 1s ease;
+}
+
+.dice-wrapper.rolling {
+  animation: rollAnimation 1s infinite;
+}
+
+@keyframes rollAnimation {
+  0% {
       transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
   }
-  
+  100% {
+      transform: rotate(360deg);
+  }
+}
 
-/*board*/
-
+/* board */
 .board-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .board-wrapper .board-row{
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-
+.text{
+  color: white;
+}

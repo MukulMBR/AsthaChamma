@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import './css/squares.css'
-import { squareContext } from './board7x7'
+import { squareContext,safeZone } from './board7x7'
 
 function Coin(props) {
     const {movePlayer} = useContext(squareContext);
@@ -18,19 +18,21 @@ function Squares(props) {
     const { stateSQ } = useContext(squareContext);
     const [gArray, setGArray] = useState([]);
     useEffect(() => {
-        // console.log("stateSQ = ",stateSQ);
-        // console.log("yae chala tha")
+        
         if (stateSQ.squares[props.index].enableCoin) {
             let ggArr = [];
             for (let i = 0; i < stateSQ.squares[props.index].noOfCoin; i++) {
                 ggArr.push({color : stateSQ.squares[props.index].color});
             }
-            //console.log(ggArr);
+            
             setGArray(ggArr);
         }
     }, [stateSQ])
+
+    const isSafeZone = safeZone.includes(props.index);
+
     return (
-        <div className="square-wrapper">
+        <div className={`square-wrapper ${isSafeZone ? 'safe-zone' : ''}`}>
             {
                 (stateSQ.squares[props.index].enableCoin && gArray.length !== 0) && <div className="Coin-wrapper">
                     {

@@ -23,7 +23,7 @@ for (let i = 0; i < 49; i++) {
     });
 }
 
-const safeZone = [3, 21, 27, 45, 8, 16, 12, 18, 32, 40, 30, 36, 24];
+export const safeZone = [3, 21, 27, 45, 8, 16, 12, 18, 32, 40, 30, 36, 24];
 const safeMap = new Map([['red', 3], ['blue', 21], ['pink', 45], ['yellow', 27], ['home', 24]]);
 export const squareContext = createContext();
 function Board7x7() {
@@ -65,55 +65,61 @@ function Board7x7() {
     const movePlayer = (idx, color) => {
         const currentPlayer = color === 'red' ? p1 : color === 'blue' ? p2 : color === 'pink' ? p3 : p4;
         const currAIdx = currentPlayer.findIndex((ele) => ele === idx);
-        const nextIdx = currentPlayer[currAIdx + diceValue];
-        const currState = stateSQ.squares;
 
-        currState[idx].noOfCoin -= 1;
-        if (currState[idx].noOfCoin === 0) currState[idx].enableCoin = false;
-        const nc = currState[idx].color;
-        const ri = nc.findIndex(ele => ele === color);
-        nc.splice(ri, 1);
-        currState[idx].color = nc;
+        if (diceValue <= currentPlayer.length - currAIdx - 1) {
+            const nextIdx = currentPlayer[currAIdx + diceValue];
+            const currState = stateSQ.squares;
 
-        if (currState[nextIdx].noOfCoin != 0 && !safeZone.find(next => next === nextIdx)) {
-            const clr = currState[nextIdx].color;
-            const inin = clr.length;
-            let repColor;
-            for (let i = 0; i < inin; i++) {
-                if (clr[i] !== color) {
-                    repColor = clr[i];
-                    break;
+            currState[idx].noOfCoin -= 1;
+            if (currState[idx].noOfCoin === 0) currState[idx].enableCoin = false;
+            const nc = currState[idx].color;
+            const ri = nc.findIndex(ele => ele === color);
+            nc.splice(ri, 1);
+            currState[idx].color = nc;
+
+            if (currState[nextIdx].noOfCoin != 0 && !safeZone.find(next => next === nextIdx)) {
+                const clr = currState[nextIdx].color;
+                const inin = clr.length;
+                let repColor;
+                for (let i = 0; i < inin; i++) {
+                    if (clr[i] !== color) {
+                        repColor = clr[i];
+                        break;
+                    }
                 }
-            }
-            let flag = 0;
-            let repIdx;
-            if (repColor) {
-                repIdx = safeMap.get(repColor);
-                flag = 1;
-            }
-
-            const newClr = clr.filter(item => item === color);
-            const newn = newClr.length;
-
-            const diff = Math.abs(inin - newn);
-            currState[nextIdx].noOfCoin -= diff;
-            if (flag) {
-                currState[repIdx].noOfCoin += diff;
-                for (let i = 0; i < diff; i++) {
-                    currState[repIdx].color.push(repColor);
+                let flag = 0;
+                let repIdx;
+                if (repColor) {
+                    repIdx = safeMap.get(repColor);
+                    flag = 1;
                 }
+
+                const newClr = clr.filter(item => item === color);
+                const newn = newClr.length;
+
+                const diff = Math.abs(inin - newn);
+                currState[nextIdx].noOfCoin -= diff;
+                if (flag) {
+                    currState[repIdx].noOfCoin += diff;
+                    for (let i = 0; i < diff; i++) {
+                        currState[repIdx].color.push(repColor);
+                    }
+                }
+                newClr.push(color);
+                currState[nextIdx].noOfCoin += 1;
+                currState[nextIdx].color = newClr;
+                currState[nextIdx].enableCoin = true;
+            } else {
+                currState[nextIdx].noOfCoin += 1;
+                currState[nextIdx].color.push(color);
+                currState[nextIdx].enableCoin = true;
             }
-            newClr.push(color);
-            currState[nextIdx].noOfCoin += 1;
-            currState[nextIdx].color = newClr;
-            currState[nextIdx].enableCoin = true;
+
+            setStateSQ({ squares: currState });
         } else {
-            currState[nextIdx].noOfCoin += 1;
-            currState[nextIdx].color.push(color);
-            currState[nextIdx].enableCoin = true;
+            alert("you cannot move this coin");
+            return;
         }
-
-        setStateSQ({ squares: currState });
     }
 
 
@@ -137,7 +143,7 @@ function Board7x7() {
                 ))}
 
                 {/* Display winner */}
-                <div className="test-w">
+                <div className="text">
                     <span>Winner is {winner}</span>
                 </div>
             </div>

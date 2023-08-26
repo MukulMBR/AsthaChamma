@@ -17,6 +17,11 @@
     grid-gap: 10px;
 }
 
+/* Style for safezone squares */
+.square-wrapper.safe-zone {
+    background-color: lightgreen; /* Change background color of safe-zone squares */
+  }
+
 /* Coin.css */
 .g-wrapper {
     height: 30px;
@@ -57,3 +62,7 @@
     display: flex;
     flex-direction: row;
 }
+
+.text{
+    color: white;
+  }

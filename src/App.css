@@ -1,19 +1,74 @@
-.container{
-  background-color: lightgreen;
-  height:100%;
-  min-height: 100vh;/* Min height */
+.container {
+  background-color: #051622; /* Light blue background */
+  height: 100%;
+  min-height: 100vh;
 }
 
-.top-bar{
-height: 60px;
-background-color: orange;
-color: white;
-text-align: center;
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;/* Blue background */
+  height: 60px;
+  color: white;
+  padding: 0 20px;
 }
 
-.card-container{
+.logo {
+  margin: 0;
+  color: #1BA098; /* White logo color */
+}
+
+.menu-left,
+.menu-right {
+  display: flex;
+}
+
+.menu-left a,
+.menu-right a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #1BA098; /* White link color */
+}
+
+.card-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.App {
+  text-align: center;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #1BA098;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.text{
+  color: white;
 }

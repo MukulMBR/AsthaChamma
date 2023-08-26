@@ -6,3 +6,14 @@
 //for install -> npm install libraryname
 //for unistall -> npm unistall libraryname
 //for navigation page  ->npm install react-router-dom@6
+
+
+installation:
+ npm install react-native 
+ npm install react-router-dom@6 
+ npm install --save react-modal 
+                                                               
+
+***Difficulties faced****
+
+if the diece value was greater than the remaining path it was getting error , so resolved it by using the loop

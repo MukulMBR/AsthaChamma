@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import './css/squares.css'
-import { squareContext } from './board9x9'
+import { squareContext ,safeZone} from './board9x9'
 
 function Coin(props) {
     const {movePlayer} = useContext(squareContext);
@@ -29,8 +29,9 @@ function Squares(props) {
             setGArray(ggArr);
         }
     }, [stateSQ])
+    const isSafeZone = safeZone.includes(props.index);
     return (
-        <div className="square-wrapper">
+        <div className={`square-wrapper ${isSafeZone ? 'safe-zone' : ''}`}>
             {
                 (stateSQ.squares[props.index].enableCoin && gArray.length !== 0) && <div className="Coin-wrapper">
                     {
