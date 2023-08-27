@@ -3,6 +3,7 @@ import Board5 from './Pages/HomePage/Board5';
 import Board7 from './Pages/HomePage/Board7';
 import Board9 from './Pages/HomePage/Board9';
 import Home from './Pages/HomePage/Home';
+import ContactUs from './Pages/HomePage/ContactUs';
 import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +25,7 @@ const App = () => {
               </div>
             </div>
           </div>
-          <h1 className="logo">Chowka Bhara</h1>
+          <h1 className="logo"><Link to="/">Chowka Bhara</Link></h1>
           <div className="menu-right">
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
@@ -46,8 +47,5 @@ const AboutUs = () => {
   return <div className='text'>About Us Content</div>
 }
 
-const ContactUs = () => {
-  return <div className='text'>Contact Us Content</div>
-}
 
 export default App;

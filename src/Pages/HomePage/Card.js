@@ -1,4 +1,4 @@
-import './Card.css'
+import './home.css'
 const Card = (props) => {
   console.log('Mukul',props);
   const {tittle,des,onclick} = props;

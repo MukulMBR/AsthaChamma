@@ -21,6 +21,27 @@
 .square-wrapper.safe-zone {
     background-color: lightgreen; /* Change background color of safe-zone squares */
   }
+  
+  /* Style for red safe-zone square */
+  .square-wrapper.safe-zone[data-index="24"] {
+    background-color: red;
+  }
+  
+  /* Style for blue safe-zone square */
+  .square-wrapper.safe-zone[data-index="20"] {
+    background-color: blue;
+  }
+  
+  /* Style for pink safe-zone square */
+  .square-wrapper.safe-zone[data-index="56"] {
+    background-color: pink;
+  }
+  
+  /* Style for yellow safe-zone square */
+  .square-wrapper.safe-zone[data-index="60"] {
+    background-color: yellow;
+  }
+  
 
 /* Coin.css */
 .g-wrapper {

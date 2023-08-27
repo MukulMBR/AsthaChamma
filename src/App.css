@@ -13,9 +13,10 @@
   padding: 0 20px;
 }
 
-.logo {
+.logo a{
   margin: 0;
-  color: #1BA098; /* White logo color */
+  color: #1BA098;
+  text-decoration: none;
 }
 
 .menu-left,
@@ -27,7 +28,7 @@
 .menu-right a {
   margin: 0 10px;
   text-decoration: none;
-  color: #1BA098; /* White link color */
+  color: #1BA098; 
 }
 
 .card-container {

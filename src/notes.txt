@@ -17,3 +17,16 @@ installation:
 ***Difficulties faced****
 
 if the diece value was greater than the remaining path it was getting error , so resolved it by using the loop
+while using link for css we need to use a example 
+.logo a{
+  margin: 0;
+  color: #1BA098;
+  text-decoration: none;
+}
+
+instead of 
+.logo {
+  margin: 0;
+  color: #1BA098;
+  text-decoration: none;
+}

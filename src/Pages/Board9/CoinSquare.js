@@ -18,14 +18,13 @@ function Squares(props) {
     const { stateSQ } = useContext(squareContext);
     const [gArray, setGArray] = useState([]);
     useEffect(() => {
-        // console.log("stateSQ = ",stateSQ);
-        // console.log("yae chala tha")
+        
         if (stateSQ.squares[props.index].enableCoin) {
             let ggArr = [];
             for (let i = 0; i < stateSQ.squares[props.index].noOfCoin; i++) {
                 ggArr.push({color : stateSQ.squares[props.index].color});
             }
-            //console.log(ggArr);
+            
             setGArray(ggArr);
         }
     }, [stateSQ])
@@ -49,4 +48,4 @@ function Squares(props) {
     )
 }
 
-export default Squares
+export default Squares;

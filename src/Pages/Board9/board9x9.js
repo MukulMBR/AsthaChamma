@@ -21,9 +21,7 @@ for (let i = 0; i < 81; i++) {
   });
 }
 
-
-
-export const safeZone = [0,4,8,10,16,20,24,36,44,56,60,64,70,72,76,80];
+export const safeZone = [0,4,8,10,16,36,44,64,70,72,76,80,24,20,56,60];
 const safeMap = new Map([['red', 4], ['blue', 36], ['pink', 76], ['yellow', 44], ['home', 40]]);
 export const squareContext = createContext(); function Board9x9() {
   const [updateState] = React.useState();
