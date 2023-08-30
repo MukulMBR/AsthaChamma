@@ -3,15 +3,19 @@ import './css/squares.css'
 import { squareContext ,safeZone} from './board9x9'
 
 function Coin(props) {
-    const {movePlayer} = useContext(squareContext);
+    const { movePlayer } = useContext(squareContext);
     return (
-        <div className = "g-wrapper" style = {{
-            backgroundColor : props.color,
-        }} onClick = {()=>movePlayer(props.squareIdx,props.color)}>
-            {props.squareIdx}
+        <div
+            className="g-wrapper"
+            style={{
+                backgroundColor: props.color,
+            }}
+            onClick={() => movePlayer(props.squareIdx, props.color)}
+        >
         </div>
-    )
+    );
 }
+
 
 
 function Squares(props) {
